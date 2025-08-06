@@ -1,0 +1,112 @@
+/* Make social media icons in contact section larger and visually prominent */
+.contact-socials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  margin-top: 32px;
+}
+.contact-socials a {
+  font-size: auto;
+  color: #0ff2ff;
+  transition: color 0.22s, text-shadow 0.22s, transform 0.22s;
+  display: flex;
+  align-items: center;
+}
+.contact-socials a:hover {
+  color: #fff;
+  text-shadow: 0 0 12px #0ff2ff, 0 0 24px #a259ff;
+  transform: scale(1.18) rotate(-4deg);
+}
+/* Contact Section - Modern, glassy form */
+.contact-section {
+  width: 100vw;
+  min-height: 100vh;
+  background: #000;
+  padding: 120px 0 60px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.contact-section h2 {
+  font-size: 2rem;
+  color: #0ff2ff;
+  margin-bottom: 36px;
+  font-weight: 800;
+}
+.contact-form {
+  background: #000;
+  border-radius: 20px;
+  box-shadow: 0 4px 32px 0 #0ff2ff22;
+  padding: 32px 24px;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  border: 1.5px solid #23272f;
+  color: #fff;
+}
+.form-group input, .form-group textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: none;
+  background: #18181b;
+  color: #fff;
+  font-size: 1.05rem;
+  margin-bottom: 0;
+  outline: none;
+  box-shadow: 0 2px 8px #0ff2ff22;
+  transition: box-shadow 0.2s;
+}
+.form-group input:focus, .form-group textarea:focus {
+  box-shadow: 0 4px 16px #a259ff33;
+}
+button[type="submit"] {
+  background: linear-gradient(90deg, #0ff2ff 0%, #a259ff 100%);
+  color: #18181b;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 0;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 16px #0ff2ff44;
+  transition: background 0.2s, color 0.2s;
+}
+button[type="submit"]:hover {
+  background: linear-gradient(90deg, #a259ff 0%, #0ff2ff 100%);
+  color: #fff;
+}
+.contact-socials {
+  margin-top: 32px;
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  align-items: center;
+}
+.contact-socials a {
+  color: #0ff2ff;
+  font-size: 2.4rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.22s, text-shadow 0.22s, transform 0.22s;
+  display: flex;
+  align-items: center;
+}
+.contact-socials a:hover {
+  color: #fff;
+  text-shadow: 0 0 12px #0ff2ff, 0 0 24px #a259ff;
+  transform: scale(1.18) rotate(-4deg);
+}
+@media (max-width: 700px) {
+  .contact-form {
+    max-width: 98vw;
+    padding: 18px 8px;
+    border-radius: 14px;
+  }
+  .contact-socials {
+    gap: 12px;
+  }
+}
