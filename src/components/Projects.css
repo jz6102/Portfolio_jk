@@ -1,9 +1,9 @@
-/* Projects Section - Modern, glassy cards */
+/* Projects Section - Modern, grid cards (Gen Z, professional) */
 .projects-section {
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   background: #000;
-  padding: 120px 0 60px 0;
+  padding: 120px 6vw 60px 6vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,80 +11,122 @@
 .projects-section h2 {
   font-size: 2rem;
   color: #0ff2ff;
-  margin-bottom: 36px;
+  margin-bottom: 28px;
   font-weight: 800;
 }
 .projects-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 32px;
-  justify-content: center;
+  display: grid;
+  /* responsive default: auto-fit so desktop behaves fluidly */
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  justify-content: center; /* center the whole grid */
   width: 100%;
   max-width: 1200px;
 }
 .project-card {
-  background: #000;
-  border-radius: 20px;
-  box-shadow: 0 4px 32px 0 #0ff2ff22;
-  padding: 32px 24px;
-  min-width: 260px;
-  max-width: 340px;
-  flex: 1 1 260px;
-  transition: box-shadow 0.3s, transform 0.3s;
-  border: 1.5px solid #23272f;
+  background: linear-gradient(180deg, #070707, #0f0f11);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(10,255,255,0.04), 0 4px 18px rgba(162,89,255,0.03);
+  padding: 24px 20px;
+  width: 100%;
+  max-width: 320px;
+  min-height: 200px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  justify-content: space-between;
+  transition: transform 0.32s cubic-bezier(.2,.9,.2,1), box-shadow 0.32s;
+  border: 1px solid rgba(35,39,47,0.6);
   color: #fff;
 }
 .project-card:hover {
-  box-shadow: 0 8px 48px 0 #a259ff33;
-  transform: translateY(-8px) scale(1.04);
+  box-shadow: 0 28px 80px rgba(10,255,255,0.06), 0 10px 40px rgba(162,89,255,0.06);
+  transform: translateY(-10px) scale(1.02);
+  border-color: rgba(162,89,255,0.18);
 }
 .project-card h3 {
   color: #a259ff;
-  font-size: 1.3rem;
-  margin-bottom: 10px;
+  font-size: 1.28rem;
+  margin-bottom: 12px;
 }
 .project-card p {
-  color: #e0e0e0;
-  font-size: 1.08rem;
-  margin-bottom: 12px;
+  color: #dfe6ea;
+  font-size: 1.02rem;
+  margin-bottom: 14px;
+  line-height: 1.6;
 }
 .project-tech {
   display: flex;
   gap: 8px;
+  flex-wrap: wrap;
   margin-bottom: 12px;
 }
 .project-tech span {
-  background: #23272f;
+  background: rgba(35,39,47,0.6);
   color: #0ff2ff;
-  border-radius: 6px;
-  padding: 2px 10px;
-  font-size: 0.95rem;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 0.9rem;
 }
 .project-links {
   display: flex;
-  gap: 18px;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-start; /* align links to the left like Achievements */
 }
 .project-links a {
   color: #0ff2ff;
   font-weight: 700;
   text-decoration: none;
-  transition: color 0.2s;
+  transition: color 0.2s, transform 0.2s;
 }
 .project-links a:hover {
   color: #a259ff;
+  transform: translateY(-2px);
+}
+@media (min-width: 1200px) {
+  .projects-list {
+    grid-template-columns: repeat(4, minmax(220px, 320px));
+    max-width: 1400px;
+  }
+}
+@media (max-width: 1100px) {
+  .projects-list {
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+    gap: 20px;
+  }
 }
 @media (max-width: 700px) {
   .projects-list {
-    flex-direction: column;
-    gap: 18px;
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
   .project-card {
+    padding: 18px 14px;
+    min-height: auto;
     max-width: 98vw;
-    min-width: 0;
-    padding: 18px 8px;
-    border-radius: 14px;
+  }
+}
+@media (max-width: 480px) {
+  .projects-section {
+    padding: 80px 4vw 40px 4vw;
+  }
+  .projects-list {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .project-card {
+    padding: 14px 12px;
+    min-height: auto;
+    border-radius: 12px;
+  }
+  .project-card h3 {
+    font-size: 1.05rem;
+  }
+  .project-card p {
+    font-size: 0.95rem;
+  }
+  .project-tech span {
+    padding: 4px 8px;
+    font-size: 0.82rem;
   }
 }

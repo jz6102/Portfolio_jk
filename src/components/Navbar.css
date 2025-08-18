@@ -26,11 +26,15 @@
   margin-left: 0;
   overflow-x: hidden;
   border-radius: 0 0 18px 18px;
+  /* smooth slide for hide/show on scroll */
+  transition: transform 0.42s cubic-bezier(.4,2,.6,1), top 0.42s cubic-bezier(.4,2,.6,1), background 0.3s;
+  will-change: transform, top;
 }
 
 .navbar-hidden {
-  top: -90px;
-  transition: top 0.4s cubic-bezier(.4,2,.6,1);
+  /* use transform so it animates regardless of position mode */
+  transform: translateY(-120%);
+  pointer-events: none;
 }
 
 .navbar-logo {
@@ -69,7 +73,6 @@
   color: #fff;
   text-shadow: none;
   letter-spacing: 0.12em;
-/* removed stray closing brace */
 }
 
 .navbar-nav {
@@ -109,6 +112,97 @@
   transform: translateY(-2px) scale(1.09) rotate(-2deg);
 }
 
+.navbar-hamburger {
+  display: none;
+  background: transparent;
+  border: none;
+  width: 44px;
+  height: 44px;
+  padding: 8px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+.navbar-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #0ff2ff;
+  margin: 4px 0;
+  transition: transform 0.28s, opacity 0.28s;
+}
+.navbar-hamburger.open span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+.navbar-hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.navbar-hamburger.open span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Mobile: hamburger at top-left and centered large logo */
+@media (max-width: 900px) {
+  /* Keep navbar fixed so hide-on-scroll still works on mobile */
+  .glassy-navbar { position: fixed; }
+
+  /* Hide hamburger on mobile as requested */
+  .navbar-hamburger { display: none !important; }
+  .mobile-nav { display: none !important; }
+
+  /* Center the logo in the header on mobile */
+  .navbar-logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 8px;
+    font-size: 1.6rem;
+    padding: 6px 12px;
+    background: transparent;
+    z-index: 2000;
+    text-align: center;
+  }
+
+  /* Show nav links as a horizontal row below the centered logo */
+  .navbar-nav {
+    display: block !important;
+    width: 100%;
+    margin-top: 56px; /* space under logo */
+    text-align: center;
+  }
+  .navbar-links {
+    display: flex;
+    flex-direction: row; /* horizontal on mobile now */
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px 18px 12px;
+    margin: 0 auto;
+    flex-wrap: wrap; /* allow wrapping to multiple rows if space is limited */
+  }
+  .navbar-links li { list-style: none; }
+  .navbar-links li a {
+    display: inline-block;
+    font-size: 1.02rem;
+    padding: 8px 12px;
+    border-radius: 12px;
+    background: linear-gradient(90deg, rgba(15,242,255,0.03), rgba(162,89,255,0.02));
+    color: #0ff2ff;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    transition: transform 0.18s, box-shadow 0.18s, background 0.18s;
+    width: auto; /* don't force full width */
+    max-width: none;
+    text-align: center;
+  }
+  .navbar-links li a:hover {
+    transform: translateY(-6px);
+    background: linear-gradient(90deg, rgba(15,242,255,0.08), rgba(162,89,255,0.06));
+    color: #fff;
+    box-shadow: 0 10px 36px rgba(10,255,255,0.04), 0 6px 24px rgba(162,89,255,0.04);
+  }
+}
+
 @media (max-width: 600px) {
   .glassy-navbar {
     flex-direction: column;
@@ -132,6 +226,28 @@
     padding: 6px 6px;
   }
 }
+@media (max-width: 480px) {
+  .navbar-links-centered {
+    gap: 10px !important;
+  }
+  .navbar-logo {
+    font-size: 1.05rem;
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+  .navbar-links {
+    width: 100%;
+    justify-content: center;
+    gap: 8px;
+    padding: 6px 4px;
+    flex-wrap: wrap;
+  }
+  .navbar-links li a {
+    font-size: 0.95rem;
+    padding: 6px 8px;
+  }
+}
+
 /* Remove vertical scroll in navbar */
 .glassy-navbar {
   overflow-y: hidden !important;
@@ -141,4 +257,36 @@
 body, html {
   background: #000 !important;
   color-scheme: dark;
+}
+
+/* Desktop (ensure original PC layout) */
+@media (min-width: 901px) {
+  .glassy-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 0 32px 0 16px;
+    min-height: 64px;
+    border-radius: 0 0 18px 18px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    overflow-x: hidden;
+  }
+  .navbar-logo {
+    position: static !important;
+    transform: none !important;
+    left: auto !important;
+    top: auto !important;
+    font-size: 2.2rem;
+    margin-left: 0;
+    margin-right: 32px;
+    padding-left: 8px;
+    padding-right: 24px;
+    text-align: left;
+  }
+  .navbar-nav { display: flex !important; }
+  .navbar-hamburger { display: none !important; }
+  .mobile-nav { display: none !important; }
 }

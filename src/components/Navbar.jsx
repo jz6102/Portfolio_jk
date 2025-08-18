@@ -1,10 +1,8 @@
-
 import React, { useEffect, useRef, useState } from "react";
 import "./Navbar.css";
 
 const navLinks = [
   { label: "Home", href: "#home" },
-//   { label: "About", href: "#about" },
   { label: "Projects", href: "#projects" },
   { label: "Achievements", href: "#achievements" },
   { label: "Contact", href: "#contact" },
@@ -36,6 +34,14 @@ const Navbar = () => {
   }, []);
 
   const [logoHover, setLogoHover] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    // close mobile menu on navigation or resize
+    const onResize = () => setMenuOpen(false);
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
 
   return (
     <header className={`navbar glassy-navbar${hidden ? ' navbar-hidden' : ''}`}>
@@ -53,6 +59,8 @@ const Navbar = () => {
           {logoHover ? 'Jaikanna' : 'JK'}
         </span>
       </a>
+
+      {/* Desktop nav */}
       <nav className="navbar-nav" aria-label="Main navigation">
         <ul className="navbar-links navbar-links-centered">
           {navLinks.map((link) => (
@@ -62,6 +70,28 @@ const Navbar = () => {
           ))}
         </ul>
       </nav>
+
+      {/* Mobile hamburger */}
+      <button
+        className={`navbar-hamburger ${menuOpen ? 'open' : ''}`}
+        aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+        aria-expanded={menuOpen}
+        onClick={() => setMenuOpen((s) => !s)}
+      >
+        <span />
+        <span />
+        <span />
+      </button>
+
+      <div className={`mobile-nav ${menuOpen ? 'mobile-open' : ''}`} role="menu">
+        <ul>
+          {navLinks.map((link) => (
+            <li key={link.href} onClick={() => setMenuOpen(false)}>
+              <a href={link.href}>{link.label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </header>
   );
 };

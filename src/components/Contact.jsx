@@ -6,9 +6,9 @@ import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
 import "./Contact.css";
 
-const SERVICE_ID = "service_xxxxxxx"; // Replace with your EmailJS service ID
-const TEMPLATE_ID = "template_xxxxxxx"; // Replace with your EmailJS template ID
-const USER_ID = "user_xxxxxxx"; // Replace with your EmailJS public key
+const SERVICE_ID = "service_1sm1pwa"; // Replace with your EmailJS service ID
+const TEMPLATE_ID = "template_s9dmtnk"; // Replace with your EmailJS template ID
+const USER_ID = "DIqcpE1O0GtbuYYJt"; // Replace with your EmailJS public key
 
 const Contact = () => {
   const form = useRef();
@@ -46,7 +46,7 @@ const Contact = () => {
       </form>
       {status && <div className="contact-status">{status}</div>}
       <div className="contact-socials">
-        <a href="https://www.instagram.com/.jk./" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <a href="https://www.instagram.com/___.__jk__.___/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
           <FaInstagram />
         </a>
         <a href="https://www.linkedin.com/in/jaikanna777" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
