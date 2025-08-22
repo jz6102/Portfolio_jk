@@ -44,32 +44,40 @@ const Home = () => {
         <h2 className="section-title">Know Me Little.....</h2>
         <div className="know-cards">
           <article className="know-card">
-            <h3>Software Developer</h3>
-            <p>
-              I design and build performant web and mobile experiences using modern stacks (React, Redux, Node). I focus on accessibility, clean architecture, and shipping products that scale.
-            </p>
-          </article>
+  <h3>Software Developer</h3>
+  <p>
+    I build web applications using React and Python with a focus on clean code,
+    usability, and scalability. I am continuously improving my craft by exploring
+    modern tools and frameworks to deliver impactful solutions.
+  </p>
+</article>
 
-          <article className="know-card">
-            <h3>AI Enthusiast & Data Analyst</h3>
-            <p>
-              Passionate about machine learning and data — I prototype models and extract insights to drive smarter decisions. I love merging data science with product-facing features.
-            </p>
-          </article>
+<article className="know-card">
+  <h3>AI Learner & Enthusiast</h3>
+  <p>
+    Currently learning the foundations of artificial intelligence and machine learning.
+    I experiment with models and workflows to understand how AI can be applied in
+    real-world applications that solve problems and create value.
+  </p>
+</article>
 
-          <article className="know-card">
-            <h3>Big Data & Engineering</h3>
-            <p>
-              Working with Hadoop and Spark for large-scale data processing, I build pipelines and ETL systems to handle terabytes of data reliably and efficiently.
-            </p>
-          </article>
+<article className="know-card">
+  <h3>Tech Integration Explorer</h3>
+  <p>
+    My core interest lies in connecting different technologies — from front-end to
+    back-end — to build complete systems. I aim to create software that drives
+    innovation and makes a meaningful difference in business and daily life.
+  </p>
+</article>
 
-          <article className="know-card">
-            <h3>Vision & Impact</h3>
-            <p>
-              I’m on a mission to digitize processes and craft next-gen software and apps that improve lives — blending design, data, and AI to create measurable impact.
-            </p>
-          </article>
+<article className="know-card">
+  <h3>Vision & Growth</h3>
+  <p>
+    I believe in lifelong learning as a developer. Every project I work on is a step
+    toward building better products and preparing for the future of tech. My goal is
+    to craft software that not only works but inspires and scales with impact.
+  </p>
+</article>
         </div>
       </section>
     </section>
