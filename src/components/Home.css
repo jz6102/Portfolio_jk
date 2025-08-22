@@ -169,22 +169,7 @@
   filter: blur(2px);
 }
 
-/* Rotating number overlay for Gen Z effect */
-.hero-img-number {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(0deg);
-  font-size: 5.5rem;
-  font-weight: 900;
-  color: #0ff2ff;
-  opacity: 0.85;
-  pointer-events: none;
-  user-select: none;
-  z-index: 3;
-  transition: transform 1.2s cubic-bezier(.4,2,.6,1);
-  text-shadow: 0 2px 32px #0ff2ff88, 0 0 8px #a259ff88;
-}
+/* Rotating number removed */
 
 /* Scroll cue */
 .scroll-cue {
@@ -399,92 +384,76 @@
 }
 /* Mobile hero redesign — simple, professional, Gen Z (max-width:700px) */
 @media (max-width: 700px) {
-  /* Simplified professional mobile hero design */
+  /* increase space between fixed navbar and hero on mobile */
+  .home-section { padding-top: 96px; }
+
   .hero-modern {
-    flex-direction: column;
-    align-items: center;
-    gap: 18px;
-    margin: 0 0 28px 0 !important;
+    gap: 8px; /* reduce vertical gap between image and intro */
+    margin: 6px 0 18px 0 !important;
   }
 
+  /* Remove the wrapper structurally on mobile so it no longer affects layout */
   .hero-img-wrapper {
-    order: -1; /* image first */
-    position: relative !important;
-    width: 320px !important;
-    height: 320px !important;
-    min-width: 0;
-    border-radius: 50% !important;
-    padding: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 12px auto 0 auto;
-    background: linear-gradient(180deg, #0a0a0a, #0f0f10);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.6);
-    z-index: 2;
-    overflow: hidden;
+    display: contents !important; /* lets the child (.hero-img) participate in layout directly */
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    overflow: visible !important;
   }
-
-  /* remove any decorative pseudo-elements added previously */
   .hero-img-wrapper::before,
   .hero-img-wrapper::after {
     display: none !important;
     content: none !important;
   }
 
+  /* Ensure the image itself fills and is styled as the oval/circle */
   .hero-img {
-    width: 92% !important;
-    height: 92% !important;
-    max-width: 292px;
-    max-height: 292px;
+    display: block;
+    width: min(64vw, 300px) !important;
+    height: auto !important;
+    aspect-ratio: 1 / 1;
     border-radius: 50% !important;
     object-fit: cover;
-    transform: none !important;
+    margin: 0 auto !important;
     border: none !important;
-    box-shadow: 0 6px 22px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
-    position: relative;
-    z-index: 2;
-    transition: none !important;
-    animation: none !important;
+    box-shadow: none !important;
+    transform: none !important;
   }
 
-  /* Intro below image — refined mobile typography */
+  /* bring intro closer to the image */
   .hero-intro {
-    order: 0; /* intro after image */
+    order: 1;
     width: 100%;
-    padding: 12px 6vw;
-    text-align: center;
-    align-items: center;
-    margin-top: 12px;
+    padding: 8px 6vw;
+    margin-top: 6px;
+    gap: 6px;
   }
-  .hero-title {
-    font-size: 1.7rem;
-    margin-top: 8px;
-    font-weight: 900;
-    letter-spacing: 0.4px;
-    color: #fff;
-    background-clip: initial;
-    -webkit-background-clip: initial;
-    -webkit-text-fill-color: initial;
-    background: none;
-    text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+
+  /* make decorative plate sharper (less blur) and slightly higher to avoid overlap */
+  .hero-img-wrapper::before {
+    filter: blur(10px);
+    top: 6%;
+    height: 46%;
   }
-  .hero-desc {
-    font-size: 1.02rem;
-    color: #cfdfe2;
-    max-width: 92%;
-    margin: 8px auto 0 auto;
-    line-height: 1.6;
-  }
-  .hero-cta { width: 100%; display: flex; flex-direction: column; gap: 12px; align-items: center; margin-top: 12px; }
-  .hero-btn { width: auto; padding: 10px 20px; border-radius: 999px; }
 }
 
 @media (max-width: 480px) {
-  .hero-img-wrapper { width: 280px !important; height: 280px !important; }
-  .hero-img { max-width: 252px; max-height: 252px; }
-  .hero-title { font-size: 1.5rem; }
-  .hero-desc { font-size: 0.98rem; }
+  .home-section { padding-top: 88px; }
+  .hero-modern { gap: 8px; margin: 6px 4vw 14px 4vw !important; }
+  .hero-img-wrapper { max-width: 96vw; }
+  .hero-img {
+    width: min(72vw, 260px) !important;
+    aspect-ratio: 1 / 1;
+    max-width: 280px;
+    border-radius: 50% !important;
+  }
+  .hero-intro { padding: 8px 5vw; margin-top: 6px; gap: 6px; }
+  .hero-img-wrapper::before { filter: blur(8px); top: 8%; height: 50%; }
 }
 
 /* Adjust contact send button to be small and not full width */
@@ -572,4 +541,329 @@
     padding: 18px;
     border-radius: 12px;
   }
+}
+@media (max-width: 700px) {
+  /* Compact Know Me cards like Contact form (mobile only) */
+  .know-section {
+    padding: 48px 4vw;
+  }
+  .know-cards {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    max-width: 92%;
+    margin: 0 auto;
+  }
+  .know-card {
+    background: linear-gradient(180deg, #070707, #0f0f11);
+    border-radius: 16px;
+    padding: 18px 16px;
+    color: #eaeaea;
+    border: 1px solid rgba(35,39,47,0.6);
+    box-shadow: 0 18px 60px rgba(10,255,255,0.04), 0 8px 30px rgba(162,89,255,0.03);
+    max-width: 92%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .know-section { padding: 28px 4vw; }
+  .know-cards { gap: 12px; max-width: 98%; }
+  .know-card {
+    padding: 14px 12px;
+    border-radius: 12px;
+  }
+}
+
+/* Adjusted mobile-only rules for hero section */
+@media (max-width: 700px) {
+  /* Make hero image an oval that fits the mobile screen width */
+  .hero-img-wrapper {
+    width: 92%;
+    max-width: 100%;
+    padding: 0; /* remove inner padding so image fills wrapper */
+    border-radius: 50%/22% !important; /* horizontal oval */
+    background: rgba(10,10,10,0.92);
+    box-shadow: none; /* remove large shadows on mobile */
+  }
+
+  .hero-img {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100%;
+    border-radius: 50%/22% !important; /* match wrapper to get oval */
+    object-fit: cover;
+    transform: none !important;
+    border: none !important; /* remove border that caused glow look */
+    box-shadow: none !important; /* remove image shadows on mobile */
+    margin: 0;
+  }
+
+  /* remove glow entirely on mobile */
+  .hero-glow { display: none !important; }
+
+  /* Ensure intro sits below image, centered and spaced */
+  .hero-intro {
+    order: 1;
+    width: 100%;
+    padding: 16px 6vw;
+    text-align: center;
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-img-wrapper {
+    display: contents !important;
+    position: static !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+  .hero-img-wrapper::before,
+  .hero-img-wrapper::after {
+    display: none !important;
+    content: none !important;
+  }
+  .hero-img {
+    width: min(72vw, 260px) !important;
+    aspect-ratio: 1 / 1;
+    max-width: 280px;
+    border-radius: 50% !important;
+    margin: 0 auto !important;
+  }
+}
+
+/* Mobile-only: new elegant oval hero image design (overrides earlier mobile rules) */
+@media (max-width: 700px) {
+  /* subtle dark gradient background for mobile hero area */
+  .home-section {
+    background: radial-gradient(circle at 20% 20%, rgba(15,242,255,0.02), transparent 15%),
+                radial-gradient(circle at 80% 80%, rgba(162,89,255,0.02), transparent 18%),
+                linear-gradient(180deg, #000 0%, #050506 100%);
+    padding-top: 80px; /* keep space for fixed navbar */
+  }
+
+  .hero-modern {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    margin: 8px 0 20px 0 !important;
+    padding: 0 4vw;
+  }
+
+  /* neutralize heavy wrapper and use a soft accent behind the image */
+  .hero-img-wrapper {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 92vw;
+    padding: 0 !important;
+    margin: 6px auto 0 auto !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    overflow: visible !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* decorative soft plate behind the image for elegance */
+  .hero-img-wrapper::before {
+    content: '';
+    position: absolute;
+    width: 98%;
+    max-width: 96vw;
+    height: 52%;
+    left: 50%;
+    top: 10%;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, rgba(162,89,255,0.04), rgba(15,242,255,0.03));
+    border-radius: 48%/24%;
+    filter: blur(18px);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* image becomes the main element: horizontal oval that fits the screen */
+  .hero-img {
+    width: 100% !important;
+    max-width: 92vw;
+    height: auto !important;
+    border-radius: 50%/20% !important; /* elegant oval */
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+    border: 1px solid rgba(255,255,255,0.03);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.35), inset 0 -8px 24px rgba(0,0,0,0.18);
+    z-index: 1;
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+  }
+
+  /* remove big glow and number overlays on mobile */
+  .hero-glow, .hero-img-number { display: none !important; }
+
+  /* intro sits below the image and centered */
+  .hero-intro {
+    order: 1;
+    width: 100%;
+    padding: 14px 6vw;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .hero-title { font-size: 1.8rem; line-height: 1.05; }
+  .hero-desc { font-size: 1rem; color: #cfdfe2; max-width: 92%; }
+  .hero-cta { width: 100%; display: flex; gap: 10px; justify-content: center; }
+  .hero-btn { padding: 10px 16px; border-radius: 999px; }
+}
+
+@media (max-width: 480px) {
+  .home-section { padding-top: 72px; }
+  .hero-img-wrapper::before { height: 54%; filter: blur(14px); }
+  .hero_img { max-width: 96vw; border-radius: 50%/22% !important; box-shadow: 0 6px 20px rgba(0,0,0,0.32); }
+  .hero-title { font-size: 1.6rem; }
+  .hero-desc { font-size: 0.98rem; }
+  .hero-intro { padding: 12px 5vw; gap: 6px; }
+  .hero-cta { gap: 8px; }
+}
+
+/* tighter spacing and aligned intro title */
+@media (max-width: 700px) {
+  .hero-modern { gap: 4px; }
+
+  .hero-img-wrapper { margin: 8px auto 0 auto !important; }
+  .hero-img { margin-bottom: 6px; }
+
+  .hero-intro {
+    order: 1;
+    width: 100%;
+    padding: 6px 5vw;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin-top: 4px;
+  }
+
+  /* Make title and description share the same width and alignment */
+  .hero-title {
+    font-size: 1.75rem;
+    margin: 0;
+    max-width: 92%;
+    width: 100%;
+    text-align: center;
+    line-height: 1.06;
+  }
+  .hero-desc {
+    font-size: 0.98rem;
+    margin: 4px auto 0 auto;
+    max-width: 92%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-modern { gap: 4px; }
+  .hero-img-wrapper { margin: 6px auto 0 auto !important; }
+  .hero-img { margin-bottom: 4px; }
+  .hero-intro { padding: 6px 4vw; margin-top: 4px; gap: 6px; }
+  .hero-title { font-size: 1.55rem; margin: 0; max-width: 96%; text-align: center; }
+  .hero-desc { font-size: 0.95rem; margin: 2px auto 0 auto; max-width: 96%; text-align: center; }
+}
+
+@media (max-width: 700px) {
+  /* Remove most vertical spacing so intro sits directly under the image */
+  .hero-modern { gap: 2px; }
+
+  .hero-img-wrapper { margin: 4px auto 0 auto !important; }
+  .hero-img { margin-bottom: 0 !important; }
+
+  .hero-intro {
+    order: 1;
+    width: 100%;
+    padding: 6px 4vw;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    margin-top: 2px !important; /* minimal gap */
+  }
+
+  /* tighten decorative plate to avoid visible gap below image */
+  .hero-img-wrapper::before {
+    top: 2%;
+    height: 44%;
+    filter: blur(8px);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-modern { gap: 2px; }
+  .hero-img-wrapper { margin: 4px auto 0 auto !important; }
+  .hero-img { margin-bottom: 0 !important; }
+  .hero-intro { padding: 6px 4vw; margin-top: 2px !important; gap: 4px; }
+  .hero-img-wrapper::before { top: 3%; height: 46%; filter: blur(6px); }
+}
+
+@media (max-width: 700px) {
+  /* make the hero image significantly larger but still contained, and reduce spacing */
+  .hero-modern { gap: 0; }
+
+  .hero-img {
+    /* larger, nearly full-width circular image */
+    width: min(84vw, 320px) !important;
+    max-width: 320px;
+    height: auto !important;
+    aspect-ratio: 1 / 1;
+    border-radius: 50% !important;
+    object-fit: cover;
+    margin: 0 auto !important;
+    border: none !important;
+    box-shadow: none !important;
+    transform: none !important;
+  }
+
+  /* Remove bottom margin and bring intro up immediately */
+  .hero-img { margin-bottom: 0 !important; }
+  .hero-intro {
+    order: 1;
+    width: 100%;
+    padding: 6px 4vw;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    margin-top: 2px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* slightly larger for small phones but constrained */
+  .hero-modern { gap: 0; }
+  .hero-img {
+    width: min(90vw, 300px) !important;
+    max-width: 300px;
+    height: auto !important;
+    aspect-ratio: 1 / 1;
+    border-radius: 50% !important;
+    object-fit: cover;
+    margin: 0 auto !important;
+  }
+  .hero-img { margin-bottom: 0 !important; }
+  .hero-intro { padding: 6px 4vw; margin-top: 2px !important; gap: 4px; }
 }

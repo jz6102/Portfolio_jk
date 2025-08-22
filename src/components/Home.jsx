@@ -3,7 +3,6 @@ import "./Home.css";
 
 
 
-import RotatingNumbers from "./RotatingNumbers";
 import jkImg from "../assets/jk.jpeg";
 import jk1Img from "../assets/jk1.jpeg";
 import jk2Img from "../assets/jai.jpg"
@@ -29,18 +28,16 @@ const Home = () => {
           </h1>
           <p className="hero-desc">
             I build <span className="highlight">world-class digital products</span> with a focus on performance, accessibility, and design. <br />
-            <span className="hero-keywords">React.js • Redux • Vite • TypeScript • UI/UX • Cloud</span>
+            <span className="hero-keywords">React.js • Node.js • Python • Sql • AI/ML • Cloud</span>
           </p>
           <div className="hero-cta">
             <a href="#projects" className="hero-btn">View Projects</a>
             <a href="#contact" className="hero-btn secondary">Contact Me</a>
           </div>
         </div>
-        <div className="hero-img-wrapper" style={{ background: 'rgba(10,10,10,0.92)' }}>
+          <div className="hero-img-wrapper" style={{ background: 'rgba(10,10,10,0.92)' }}>
           <img src={heroImages[imgIdx]} alt="Profile" className="hero-img" />
           <div className="hero-glow"></div>
-          {/* Rotating number overlay */}
-          <RotatingNumbers numbers={[1, 2, 3, 4, 5, 6, 7, 8, 9]} interval={3000} />
         </div>
       </div>
       <section className="know-section" id="know">

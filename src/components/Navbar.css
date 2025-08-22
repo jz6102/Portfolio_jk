@@ -156,47 +156,51 @@
     left: 50%;
     transform: translateX(-50%);
     top: 8px;
-    font-size: 1.6rem;
-    padding: 6px 12px;
+    font-size: 2rem; /* bigger logo on mobile */
+    padding: 8px 14px;
     background: transparent;
     z-index: 2000;
     text-align: center;
+    line-height: 1;
   }
 
   /* Show nav links as a horizontal row below the centered logo */
   .navbar-nav {
     display: block !important;
     width: 100%;
-    margin-top: 56px; /* space under logo */
+    margin-top: 64px; /* space under logo */
     text-align: center;
   }
   .navbar-links {
     display: flex;
     flex-direction: row; /* horizontal on mobile now */
-    gap: 10px;
+    gap: 8px; /* tighter gap to keep in single line */
     align-items: center;
     justify-content: center;
-    padding: 8px 12px 18px 12px;
+    padding: 6px 8px 12px 8px;
     margin: 0 auto;
-    flex-wrap: wrap; /* allow wrapping to multiple rows if space is limited */
+    flex-wrap: nowrap; /* prevent wrapping to next line */
+    white-space: nowrap; /* avoid line breaks inside links */
+    overflow: hidden; /* hide any overflow instead of wrapping */
   }
   .navbar-links li { list-style: none; }
   .navbar-links li a {
     display: inline-block;
     font-size: 1.02rem;
-    padding: 8px 12px;
-    border-radius: 12px;
+    padding: 8px 10px; /* compact tap target */
+    border-radius: 10px;
     background: linear-gradient(90deg, rgba(15,242,255,0.03), rgba(162,89,255,0.02));
     color: #0ff2ff;
     font-weight: 800;
-    letter-spacing: 0.6px;
-    transition: transform 0.18s, box-shadow 0.18s, background 0.18s;
+    letter-spacing: 0.5px;
+    transition: transform 0.16s, box-shadow 0.16s, background 0.16s;
     width: auto; /* don't force full width */
     max-width: none;
     text-align: center;
+    white-space: nowrap; /* ensure label doesn't wrap */
   }
   .navbar-links li a:hover {
-    transform: translateY(-6px);
+    transform: translateY(-4px);
     background: linear-gradient(90deg, rgba(15,242,255,0.08), rgba(162,89,255,0.06));
     color: #fff;
     box-shadow: 0 10px 36px rgba(10,255,255,0.04), 0 6px 24px rgba(162,89,255,0.04);
@@ -204,48 +208,25 @@
 }
 
 @media (max-width: 600px) {
-  .glassy-navbar {
-    flex-direction: column;
-    padding: 0 1px;
-    min-height: 40px;
-    border-radius: 0 0 8px 8px;
-    max-width: 100vw;
-  }
-  .navbar-logo {
-    font-size: 1rem;
-    margin: 0 0 4px 0;
-    padding: 4px 0;
-  }
-  .navbar-links {
-    gap: 1px;
-    flex-wrap: wrap;
-    max-width: 100vw;
-  }
-  .navbar-links li a {
-    font-size: 0.92rem;
-    padding: 6px 6px;
-  }
+  .glassy-navbar { min-height: 56px; }
+  .navbar-logo { font-size: 1.88rem; top: 6px; padding: 6px 12px; }
+  .navbar-nav { margin-top: 56px; }
+  .navbar-links { gap: 6px; }
+  .navbar-links li a { padding: 8px 10px; font-size: 0.98rem; }
 }
+
 @media (max-width: 480px) {
-  .navbar-links-centered {
-    gap: 10px !important;
-  }
-  .navbar-logo {
-    font-size: 1.05rem;
-    padding-left: 6px;
-    padding-right: 6px;
-  }
+  .navbar-links-centered { gap: 8px !important; }
+  .navbar-logo { font-size: 1.8rem; padding-left: 6px; padding-right: 6px; }
   .navbar-links {
     width: 100%;
     justify-content: center;
-    gap: 8px;
-    padding: 6px 4px;
-    flex-wrap: wrap;
+    gap: 6px;
+    padding: 6px 6px;
+    flex-wrap: nowrap; /* keep single line */
+    overflow: hidden;
   }
-  .navbar-links li a {
-    font-size: 0.95rem;
-    padding: 6px 8px;
-  }
+  .navbar-links li a { font-size: 0.94rem; padding: 7px 10px; }
 }
 
 /* Remove vertical scroll in navbar */
@@ -257,6 +238,13 @@
 body, html {
   background: #000 !important;
   color-scheme: dark;
+}
+
+/* Smooth scrolling for browsers and reserve space for fixed navbar */
+html {
+  scroll-behavior: smooth;
+  /* Reserve space equal to typical navbar height so sections are visible under fixed header */
+  scroll-padding-top: 86px;
 }
 
 /* Desktop (ensure original PC layout) */

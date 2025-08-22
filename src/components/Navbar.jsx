@@ -43,6 +43,36 @@ const Navbar = () => {
     return () => window.removeEventListener('resize', onResize);
   }, []);
 
+  // Smooth offset-aware scrolling for in-page links inside the navbar
+  useEffect(() => {
+    const navbarSelector = '.glassy-navbar';
+    const navLinksSelector = `${navbarSelector} a[href^="#"]`;
+    const links = Array.from(document.querySelectorAll(navLinksSelector));
+
+    function getNavHeight() {
+      const nav = document.querySelector(navbarSelector);
+      return nav ? Math.round(nav.getBoundingClientRect().height) : 86;
+    }
+
+    function onLinkClick(e) {
+      const href = e.currentTarget.getAttribute('href');
+      if (!href || !href.startsWith('#')) return;
+      const target = document.querySelector(href);
+      if (!target) return;
+      e.preventDefault();
+
+      const offset = getNavHeight() + 8; // small gap under the header
+      const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+
+      // close mobile menu if open
+      setMenuOpen(false);
+    }
+
+    links.forEach(l => l.addEventListener('click', onLinkClick));
+    return () => links.forEach(l => l.removeEventListener('click', onLinkClick));
+  }, []);
+
   return (
     <header className={`navbar glassy-navbar${hidden ? ' navbar-hidden' : ''}`}>
       <a

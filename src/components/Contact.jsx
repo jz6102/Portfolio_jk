@@ -55,9 +55,9 @@ const Contact = () => {
         <a href="https://github.com/jz6102" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
           <FaGithub />
         </a>
-        <a href="https://leetcode.com/u/jaikanna777/" target="_blank" rel="noopener noreferrer" aria-label="LeetCode">
+        {/* <a href="https://leetcode.com/u/jaikanna777/" target="_blank" rel="noopener noreferrer" aria-label="LeetCode">
           <SiLeetcode />
-        </a>
+        </a> */}
       </div>
     </section>
   );

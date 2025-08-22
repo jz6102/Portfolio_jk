@@ -3,84 +3,76 @@ import "./Achievements.css";
 
 const achievements = [
   {
-    title: "AWS Certified Solutions Architect",
-    description: "Amazon Web Services certification for cloud architecture.",
-    image: "https://dummyimage.com/120x80/0ff2ff/23272f&text=AWS",
-    category: "Certifications",
-    github: "https://github.com/yourusername/aws-cert",
-    link: "https://aws.amazon.com/certification/certified-solutions-architect-associate/"
+    "title": "AWS Machine Learning",
+    "description": "Amazon Web Services certification focused on applied machine learning concepts and deployment.",
+    "category": "Cloud",
+    "image": "https://dummyimage.com/120x80/0ff2ff/23272f&text=AWS+ML",
+    "link": "https://aws.amazon.com/certification/",
+    "github": "https://github.com/jz6102/CERTIFICATIONS/tree/main/01_Cloud"
   },
   {
-    title: "Google UX Design Certificate",
-    description: "Professional certificate in UX design from Google.",
-    image: "https://dummyimage.com/120x80/a259ff/23272f&text=UX",
-    category: "Certifications",
-    github: "https://github.com/yourusername/google-ux-cert",
-    link: "https://www.coursera.org/professional-certificates/google-ux-design"
+    "title": "Ethical Hacking",
+    "description": "Certification covering penetration testing, cyber attacks, and security fundamentals.",
+    "category": "Cybersecurity",
+    "image": "https://dummyimage.com/120x80/ff4444/23272f&text=Hacking",
+    "link": "https://www.eccouncil.org/programs/certified-ethical-hacker-ceh/",
+    "github": "https://github.com/jz6102/CERTIFICATIONS/tree/main/02_Cybersecurity"
   },
   {
-    title: "Microsoft Certified: Azure Developer Associate",
-    description: "Microsoft certification for Azure cloud development.",
-    image: "https://dummyimage.com/120x80/0ff2ff/23272f&text=Azure",
-    category: "Certifications",
-    github: "https://github.com/yourusername/azure-cert",
-    link: "https://learn.microsoft.com/en-us/certifications/azure-developer/"
+    "title": "Flutter Development Bootcamp",
+    "description": "Comprehensive Flutter app development course taught by Angela Yu.",
+    "category": "Mobile Development",
+    "image": "https://dummyimage.com/120x80/00cfff/23272f&text=Flutter+Yu",
+    "link": "https://www.udemy.com/course/flutter-bootcamp-with-dart/",
+    "github": "https://github.com/jz6102/CERTIFICATIONS/tree/main/03_Mobile"
   },
   {
-    title: "Coursera Full-Stack Web Development",
-    description: "Completed Coursera specialization in full-stack web development.",
-    image: "https://dummyimage.com/120x80/a259ff/23272f&text=FullStack",
-    category: "Certifications",
-    github: "https://github.com/yourusername/coursera-fullstack",
-    link: "https://www.coursera.org/specializations/full-stack-react"
+    "title": "Flutter Advanced",
+    "description": "Advanced Flutter concepts and architecture by Maximilian Schwarzmüller.",
+    "category": "Mobile Development",
+    "image": "https://dummyimage.com/120x80/0077ff/ffffff&text=Flutter+Max",
+    "link": "https://www.udemy.com/course/learn-flutter-dart-to-build-ios-android-apps/",
+    "github": "https://github.com/jz6102/CERTIFICATIONS/tree/main/03_Mobile"
   },
   {
-    title: "Udemy React Mastery",
-    description: "Udemy certificate for advanced React.js development.",
-    image: "https://dummyimage.com/120x80/0ff2ff/23272f&text=React",
-    category: "Certifications",
-    github: "https://github.com/yourusername/udemy-react-mastery",
-    link: "https://www.udemy.com/certificate/react-mastery/"
+    "title": "IIRS Remote Sensing",
+    "description": "ISRO’s Indian Institute of Remote Sensing program in GIS, GNSS, and remote sensing technologies.",
+    "category": "Space Research",
+    "image": "https://dummyimage.com/120x80/ffaa00/23272f&text=IIRS+RS",
+    "link": "https://www.iirs.gov.in/",
+    "github": "https://github.com/jz6102/CERTIFICATIONS/tree/main/04_Space_Research"
   },
   {
-    title: "Google Data Analytics Certificate",
-    description: "Professional certificate in data analytics from Google.",
-    image: "https://dummyimage.com/120x80/a259ff/23272f&text=Data+Analytics",
-    category: "Certifications",
-    github: "https://github.com/yourusername/google-data-analytics",
-    link: "https://www.coursera.org/professional-certificates/google-data-analytics"
+    "title": "IIRS AIML for Geodata Analysis",
+    "description": "IIRS certification program applying artificial intelligence and machine learning to geospatial data.",
+    "category": "Space Research",
+    "image": "https://dummyimage.com/120x80/ff8800/23272f&text=IIRS+AIML",
+    "link": "https://www.iirs.gov.in/",
+    "github": "https://github.com/jz6102/CERTIFICATIONS/tree/main/04_Space_Research"
   },
   {
-    title: "Meta Front-End Developer Certificate",
-    description: "Meta (Facebook) certificate for front-end web development.",
-    image: "https://dummyimage.com/120x80/0ff2ff/23272f&text=MetaFE",
-    category: "Certifications",
-    github: "https://github.com/yourusername/meta-frontend-cert",
-    link: "https://www.coursera.org/professional-certificates/meta-front-end-developer"
+    "title": "Meta Front-End Developer",
+    "description": "Meta’s professional certificate for front-end web development including HTML, CSS, and React.",
+    "category": "Web Development",
+    "image": "https://dummyimage.com/120x80/4267b2/ffffff&text=Meta+FrontEnd",
+    "link": "https://www.coursera.org/professional-certificates/meta-front-end-developer",
+    "github": "https://github.com/jz6102/CERTIFICATIONS/tree/main/05_Web"
   },
   {
-    title: "IBM AI Engineering Professional Certificate",
-    description: "IBM certificate for AI and machine learning engineering.",
-    image: "https://dummyimage.com/120x80/a259ff/23272f&text=IBM+AI",
-    category: "Certifications",
-    github: "https://github.com/yourusername/ibm-ai-engineering",
-    link: "https://www.coursera.org/professional-certificates/ai-engineer"
+    "title": "Meta JavaScript",
+    "description": "Meta’s certification focusing on modern JavaScript and advanced front-end logic.",
+    "category": "Web Development",
+    "image": "https://dummyimage.com/120x80/333333/ffffff&text=Meta+JS",
+    "link": "https://www.coursera.org/learn/meta-programming-with-javascript",
+    "github": "https://github.com/jz6102/CERTIFICATIONS/tree/main/05_Web"
   },
   {
-    title: "Scrum Master Certification",
-    description: "Certified Scrum Master for agile project management.",
-    image: "https://dummyimage.com/120x80/0ff2ff/23272f&text=Scrum",
-    category: "Certifications",
-    github: "https://github.com/yourusername/scrum-master-cert",
-    link: "https://www.scrum.org/professional-scrum-master-i-certification"
-  },
-  {
-    title: "Oracle Certified Java Programmer",
-    description: "Oracle certification for Java programming expertise.",
-    image: "https://dummyimage.com/120x80/a259ff/23272f&text=Java",
-    category: "Certifications",
-    github: "https://github.com/yourusername/oracle-java-cert",
-    link: "https://education.oracle.com/java-se-programmer"
+    "title": "Research Paper",
+    "description": "Published research paper under SRMIST in the field of computer science and technology.",
+    "category": "Research",
+    "image": "https://dummyimage.com/120x80/009900/ffffff&text=Research",
+    "link": "https://www.srmist.edu.in/",
+    "github": "https://github.com/jz6102/CERTIFICATIONS/tree/main/06_Research"
   }
 ];
 
