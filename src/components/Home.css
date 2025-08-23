@@ -21,13 +21,14 @@
   flex-direction: row;
   align-items: stretch;
   justify-content: flex-start;
-  width: 100vw;
-  max-width: 100vw;
+  width: 100%; /* use percent so mobile chrome/viewport changes don't shift layout */
+  max-width: 100%;
   margin: 0 0 48px 40px;
   min-height: 60vh;
   gap: 0;
   position: relative;
   overflow: visible;
+  box-sizing: border-box;
 }
 
 .hero-intro {
@@ -118,7 +119,7 @@
   top: 0;
   bottom: 0;
   width: 70vw;
-  min-width: 480px;
+  /* note: min-width intentionally removed from the base rules so small viewports won't be forced to overflow */
   height: 100%;
   background: rgba(10,10,10,0.92);
   border-radius: 0 0 0 80% / 0 100% 100% 0;
@@ -394,7 +395,7 @@
 
   /* Remove the wrapper structurally on mobile so it no longer affects layout */
   .hero-img-wrapper {
-    display: contents !important; /* lets the child (.hero-img) participate in layout directly */
+    display: flex !important; /* use flex instead of display:contents for consistent browser support */
     position: static !important;
     width: 100% !important;
     max-width: 100% !important;
@@ -404,11 +405,7 @@
     box-shadow: none !important;
     border-radius: 0 !important;
     overflow: visible !important;
-  }
-  .hero-img-wrapper::before,
-  .hero-img-wrapper::after {
-    display: none !important;
-    content: none !important;
+    min-width: 0 !important;
   }
 
   /* Ensure the image itself fills and is styled as the oval/circle */
@@ -423,6 +420,7 @@
     border: none !important;
     box-shadow: none !important;
     transform: none !important;
+    min-width: 0 !important; /* allow shrinking on narrow UAs */
   }
 
   /* bring intro closer to the image */
@@ -617,7 +615,7 @@
 
 @media (max-width: 480px) {
   .hero-img-wrapper {
-    display: contents !important;
+    display: flex !important;
     position: static !important;
     width: 100% !important;
     padding: 0 !important;
@@ -625,11 +623,7 @@
     background: transparent !important;
     box-shadow: none !important;
     border-radius: 0 !important;
-  }
-  .hero-img-wrapper::before,
-  .hero-img-wrapper::after {
-    display: none !important;
-    content: none !important;
+    min-width: 0 !important;
   }
   .hero-img {
     width: min(72vw, 260px) !important;
@@ -637,6 +631,7 @@
     max-width: 280px;
     border-radius: 50% !important;
     margin: 0 auto !important;
+    min-width: 0 !important;
   }
 }
 
@@ -723,10 +718,6 @@
     gap: 8px;
     margin-top: 10px;
   }
-  .hero-title { font-size: 1.8rem; line-height: 1.05; }
-  .hero-desc { font-size: 1rem; color: #cfdfe2; max-width: 92%; }
-  .hero-cta { width: 100%; display: flex; gap: 10px; justify-content: center; }
-  .hero-btn { padding: 10px 16px; border-radius: 999px; }
 }
 
 @media (max-width: 480px) {
@@ -866,4 +857,180 @@
   }
   .hero-img { margin-bottom: 0 !important; }
   .hero-intro { padding: 6px 4vw; margin-top: 2px !important; gap: 4px; }
+}
+
+/* Mobile: tighten spacing between navbar, image and intro without touching desktop */
+@media (max-width: 700px) {
+  /* reduce space reserved for the fixed navbar so hero moves up slightly */
+  .home-section {
+    padding-top: 64px !important;
+  }
+
+  /* reduce vertical gap between image and intro */
+  .hero-modern {
+    gap: 4px !important;
+  }
+
+  /* nudge the image up closer to the navbar */
+  .hero-img-wrapper {
+    margin-top: 6px !important;
+  }
+
+  /* ensure image doesn't introduce extra bottom margin */
+  .hero-img {
+    margin-bottom: 0 !important;
+  }
+
+  /* pull intro closer to the image */
+  .hero-intro {
+    margin-top: 4px !important;
+    padding: 6px 4vw !important;
+    gap: 6px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* slightly tighter on small phones */
+  .home-section {
+    padding-top: 56px !important;
+  }
+  .hero-modern {
+    gap: 2px !important;
+  }
+  .hero-img-wrapper {
+    margin-top: 4px !important;
+  }
+  .hero-img {
+    margin-bottom: 0 !important;
+  }
+  .hero-intro {
+    margin-top: 2px !important;
+    padding: 6px 3.5vw !important;
+    gap: 4px !important;
+  }
+}
+
+/* Final compact mobile hero tweak: reduce gaps above/below image for a tighter, professional layout */
+@media (max-width: 700px) {
+  /* reduce reserved header space so hero moves up closer to navbar */
+  .home-section { padding-top: 48px !important; }
+
+  /* collapse gaps between image and intro */
+  .hero-modern { gap: 0 !important; }
+
+  /* remove any top spacing and ensure image sits close to navbar */
+  .hero-img-wrapper { margin-top: 0 !important; padding-top: 0 !important; }
+
+  .hero-img {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    width: min(80vw, 320px) !important;
+    max-width: 320px;
+    min-width: 0 !important;
+  }
+
+  /* pull intro immediately under the image */
+  .hero-intro { margin-top: 2px !important; padding: 6px 3.5vw !important; gap: 4px !important; }
+}
+
+@media (max-width: 480px) {
+  .home-section { padding-top: 40px !important; }
+  .hero-modern { gap: 0 !important; }
+  .hero-img-wrapper { margin-top: 0 !important; padding-top: 0 !important; }
+  .hero-img { width: min(78vw, 300px) !important; max-width: 300px; min-width: 0 !important; }
+  .hero-intro { margin-top: 0 !important; padding: 5px 3.5vw !important; gap: 3px !important; }
+}
+
+/* Mobile-only: remove .hero-img-wrapper from layout (feature-detect with fallback) */
+@media (max-width: 700px) {
+  /* preferred: if browser supports display:contents, use it to remove the wrapper box entirely */
+  @supports (display: contents) {
+    .hero-img-wrapper {
+      display: contents !important;
+      position: static !important;
+      width: 100% !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+      overflow: visible !important;
+    }
+    .hero-img-wrapper::before,
+    .hero-img-wrapper::after {
+      display: none !important;
+      content: none !important;
+    }
+  }
+
+  /* fallback: if display:contents is not supported, zero-out the wrapper so it doesn't add gap */
+  @supports not (display: contents) {
+    .hero-img-wrapper {
+      display: block !important;
+      position: static !important;
+      width: 100% !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+      overflow: visible !important;
+      height: auto !important;
+    }
+    .hero-img-wrapper::before,
+    .hero-img-wrapper::after {
+      display: none !important;
+      content: none !important;
+    }
+    .hero-img {
+      display: block !important;
+      margin: 0 auto !important;
+      min-width: 0 !important;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  @supports (display: contents) {
+    .hero-img-wrapper {
+      display: contents !important;
+      position: static !important;
+      width: 100% !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+      overflow: visible !important;
+    }
+    .hero-img-wrapper::before,
+    .hero-img-wrapper::after {
+      display: none !important;
+      content: none !important;
+    }
+  }
+  @supports not (display: contents) {
+    .hero-img-wrapper {
+      display: block !important;
+      position: static !important;
+      width: 100% !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+      overflow: visible !important;
+      height: auto !important;
+    }
+    .hero-img-wrapper::before,
+    .hero-img-wrapper::after {
+      display: none !important;
+      content: none !important;
+    }
+    .hero-img {
+      display: block !important;
+      margin: 0 auto !important;
+      min-width: 0 !important;
+    }
+  }
 }

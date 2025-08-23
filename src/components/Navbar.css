@@ -63,13 +63,13 @@
 
 .navbar-logo-text {
   display: inline-block;
-  transition: width 0.5s cubic-bezier(.4,2,.6,1), color 0.22s, text-shadow 0.22s, letter-spacing 0.22s;
+  transition: max-width 0.5s cubic-bezier(.4,2,.6,1), color 0.22s, text-shadow 0.22s, letter-spacing 0.22s;
   overflow: hidden;
   white-space: nowrap;
-  width: 2.6ch;
+  max-width: 6rem; /* use rem-based limit instead of ch for consistent cross-device sizing */
 }
 .navbar-logo-expanded .navbar-logo-text {
-  width: 8.5ch;
+  max-width: 14rem;
   color: #fff;
   text-shadow: none;
   letter-spacing: 0.12em;
@@ -174,14 +174,14 @@
   .navbar-links {
     display: flex;
     flex-direction: row; /* horizontal on mobile now */
-    gap: 8px; /* tighter gap to keep in single line */
+    gap: 8px; /* keep compact gap */
     align-items: center;
     justify-content: center;
     padding: 6px 8px 12px 8px;
     margin: 0 auto;
-    flex-wrap: nowrap; /* prevent wrapping to next line */
-    white-space: nowrap; /* avoid line breaks inside links */
-    overflow: hidden; /* hide any overflow instead of wrapping */
+    flex-wrap: wrap; /* allow wrapping so font differences won't clip links */
+    white-space: normal; /* allow wrapping inside if necessary */
+    overflow: visible; /* show wrapped items instead of clipping */
   }
   .navbar-links li { list-style: none; }
   .navbar-links li a {
