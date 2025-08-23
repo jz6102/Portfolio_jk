@@ -3,8 +3,8 @@ import "./Home.css";
 
 
 
-import jkImg from "../assets/jk.jpeg";
-import jk1Img from "../assets/jk1.jpeg";
+import jkImg from "../assets/jk.jpg";
+import jk1Img from "../assets/jk1.jpg";
 import jk2Img from "../assets/jai.jpg"
 
 
