@@ -78,31 +78,25 @@ const achievements = [
 
 
 const Achievements = () => {
-  // Group by category
-  const categories = Array.from(new Set(achievements.map(a => a.category)));
+  // Render achievements as a single ordered list (no categories)
   return (
     <section className="achievements-section" id="achievements">
       <h2>Achievements</h2>
-      {categories.map(cat => (
-        <div key={cat} className="achievements-category">
-          <h3 className="achievements-category-title">{cat}</h3>
-          <div className="achievements-list">
-            {achievements.filter(a => a.category === cat).map((ach, idx) => (
-              <div className="achievement-card" key={ach.title + idx}>
-                <img src={ach.image} alt={ach.title} className="achievement-img" />
-                <div>
-                  <h4>{ach.title}</h4>
-                  <p>{ach.description}</p>
-                  <div className="achievement-links">
-                    <a href={ach.github} target="_blank" rel="noopener noreferrer" className="achievement-link-btn">GitHub</a>
-                    <a href={ach.link} target="_blank" rel="noopener noreferrer" className="achievement-link-btn">Certificate</a>
-                  </div>
-                </div>
+      <div className="achievements-list">
+        {achievements.map((ach, idx) => (
+          <div className="achievement-card" key={ach.title + idx}>
+            <img src={ach.image} alt={ach.title} className="achievement-img" />
+            <div>
+              <h4>{ach.title}</h4>
+              <p>{ach.description}</p>
+              <div className="achievement-links">
+                <a href={ach.github} target="_blank" rel="noopener noreferrer" className="achievement-link-btn">GitHub</a>
+                <a href={ach.link} target="_blank" rel="noopener noreferrer" className="achievement-link-btn">Certificate</a>
               </div>
-            ))}
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </section>
   );
 };

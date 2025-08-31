@@ -114,3 +114,29 @@
     box-shadow: 0 12px 40px rgba(10,255,255,0.04);
   }
 }
+/* Desktop-only: match Projects grid behavior for ordered columns */
+@media (min-width: 901px) {
+  .achievements-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
+    justify-content: center;
+    align-items: start;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    justify-items: center;
+  }
+  /* At very large screens prefer 4 neatly sized columns */
+  @media (min-width: 1200px) {
+    .achievements-list {
+      grid-template-columns: repeat(4, minmax(220px, 320px));
+      max-width: 1400px;
+    }
+  }
+  .achievement-card {
+    max-width: 360px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
